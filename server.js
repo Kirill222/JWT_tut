@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const jwt = require('jsonwebtoken')
+const authenticateToken = require('./#middleware/authenticationTokenMiddleware')
 
 const app = express()
 
@@ -18,14 +19,12 @@ const posts = [
     },
 ]
 
-app.get('/posts', (req, res, next) => {
-    res.json(posts)
+app.get('/posts', authenticateToken, (req, res, next) => {
+    res.json(posts.filter(post => post.username === req.user.name))
 })
 
 app.post('/login', (req, res, next) => {
     //Authenticate user. Another video: https://www.youtube.com/watch?v=Ud5xKCYQTjM
-
-
     //Next code
     const username = req.body.username
     const user = {name: username}
