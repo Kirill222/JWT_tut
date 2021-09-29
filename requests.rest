@@ -1,11 +1,31 @@
 GET http://localhost:5000/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmF0bWFuIiwiaWF0IjoxNjMyODk1NzMzfQ.aVngaRLCf8Ru9K5M8vejkhxh-BO2H-2m_q8EfkmaFxM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmF0bWFuIiwiaWF0IjoxNjMyOTIwNzEyfQ.GiI_lMvSqDMY3DWl0ETVCh_2ce7XF_phh3ZkENQXjiw
+
+
  
 
 ###
-POST http://localhost:5000/login
+POST http://localhost:8000/login
 Content-Type: application/json
 
 {
     "username": "Batman"
+}
+
+###
+POST http://localhost:8000/token
+Content-Type: application/json
+
+{
+    //this is a refresh token
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmF0bWFuIiwiaWF0IjoxNjMyOTE5MDk2fQ.6TBirIf6ljalpMdQ5NwGrn78JTA9ns7Jd3hWeSDnU4Y"
+}
+
+###
+DELETE http://localhost:8000/logout
+Content-Type: application/json
+
+{
+    //also refresh token
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmF0bWFuIiwiaWF0IjoxNjMyOTIwODAyfQ.j_mI6EOS8808BYYy3QRO2mTWITA09Tf1S7VLgUUGbpQ"
 }
